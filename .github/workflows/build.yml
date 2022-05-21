@@ -7,7 +7,7 @@ jobs:
   build:
     strategy:
       matrix:
-        browser: [chromium, firefox, edge]
+        browser: [chromium]
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
@@ -29,6 +29,8 @@ jobs:
           firefox-version: "84.0"
       - uses: browser-actions/setup-chromium@latest
         if: matrix.browser == 'chromium'
+        with:
+          chrome-version: 297097 # Chromium 39.0.2171.99
       - uses: browser-actions/setup-edge@latest
         if: matrix.browser == 'edge'
 
